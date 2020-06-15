@@ -1,3 +1,7 @@
+parse
+test/test.js
+test/test.ref.json
+
 # Logs
 logs
 *.log
