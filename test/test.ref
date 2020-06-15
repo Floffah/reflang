@@ -1,0 +1,5 @@
+DECLARE hello INITIALLY "world"
+SEND hello TO DISPLAY
+
+SET hello TO "foobar"
+SEND hello TO DISPLAY

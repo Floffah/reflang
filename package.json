@@ -1,0 +1,17 @@
+{
+  "name": "referencelanguage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "nearley": "^2.19.3",
+    "moo": "^0.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "nearleyc lang/lang.ne -o parse/grammar.js && nearley-railroad lang/lang.ne -o parse/grammar.html && node src/parse"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
