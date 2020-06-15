@@ -6,8 +6,8 @@ const compile = require('./compile');
 
 const parser = new nearley.Parser(nearley.Grammar.fromCompiled(grammar));
 
-parser.feed(fs.readFileSync(path.resolve(__dirname, '../test', 'test.ref'), 'utf8').replace(/\r\n/g, "\n"));
+parser.feed(fs.readFileSync(path.resolve(process.cwd(), process.argv[2]), 'utf8').replace(/\r\n/g, "\n"));
 
-fs.writeFileSync(path.resolve(__dirname, '../test', 'test.ref.json'), JSON.stringify(parser.results, null, 2), 'utf8');
+fs.writeFileSync(path.resolve(process.cwd(), process.argv[2] + ".json"), JSON.stringify(parser.results, null, 2), 'utf8');
 
-compile(path.resolve(__dirname, '../test', 'test.ref'), parser.results);
+compile(path.resolve(process.cwd(), process.argv[2]), parser.results);

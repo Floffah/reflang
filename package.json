@@ -9,7 +9,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "nearleyc lang/lang.ne -o parse/grammar.js && nearley-railroad lang/lang.ne -o parse/grammar.html && node src/parse"
+    "test": "npx nearleyc lang/lang.ne -o parse/grammar.js && npx nearley-railroad lang/lang.ne -o parse/grammar.html && node src/parse",
+    "parse": "npx nearleyc lang/lang.ne -o parse/grammar.js && npx node src/parse test/test.ref"
   },
   "keywords": [],
   "author": "",
