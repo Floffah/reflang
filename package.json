@@ -13,7 +13,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "npx nearleyc lang/lang.ne -o parse/grammar.js && npx nearley-railroad lang/lang.ne -o parse/grammar.html && node src/parse test/test.ref --dev --thread",
-    "parse": "npx nearleyc -o parse/grammar.js lang/lang.ne && npx node src/parse test/test.ref"
+    "test:min": "npx nearleyc -o parse/grammar.js lang/lang.ne && npx node src/parse test/test.ref --dev"
   },
   "keywords": [],
   "author": "",

@@ -1,15 +1,24 @@
-module.exports = (parsed, fln, dothread) => {
+module.exports = parse;
+
+function parse(parsed, dothread) {
     let nodecode = "";
 
     parsed.forEach((parse) => {
         nodecode += create(parse);
     });
 
-    return `${dothread ? "//thread\nconst{expose}=require('threads/worker');expose(function run(file){return file});\n\n" : ""}//${fln}\n${nodecode};`;
+    return `${dothread ? "//thread\nconst{expose}=require('threads/worker');expose(function run(file){return file});\n\n" : ""}\n${nodecode}`;
 }
 
-function create(data) {
-    let code;
+function create(dta) {
+    let code = "";
+    let data;
+    
+    if(Array.isArray(dta)) {
+        data = dta[0];
+    } else {
+        data = dta;
+    }
 
     if (data === "newline") {
         code = "\n";
@@ -21,13 +30,15 @@ function create(data) {
         }
     } else if (data.type === "set") {
         code = `${data.name} = ${valueify(data.value)};`
+    } else if(data.type === "if") {
+        code = `if(${conditionify(data.condition)}) {${parse(data.children, false)}}`
     }
 
     return code;
 }
 
 function valueify(data) {
-    let value;
+    let value = "";
 
     if (data.dtype === "string") {
         value = `"${data.string}"`
@@ -35,4 +46,14 @@ function valueify(data) {
         value = data.variable
     }
     return value;
+}
+
+function conditionify(data) {
+    let condition = "";
+
+    if(data.compare === "equals") {
+        condition = `${valueify(data.val1)} === ${valueify(data.val2)}`
+    }
+
+    return condition;
 }

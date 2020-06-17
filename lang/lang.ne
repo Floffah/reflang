@@ -19,6 +19,10 @@
         declare: "DECLARE",
         init: "INITIALLY",
         set: "SET",
+
+        //conditions
+        if: ["IF", "THEN", "END IF"],
+        condition: "=="
     });
 %}
 

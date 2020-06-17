@@ -4,4 +4,9 @@ SEND hello TO DISPLAY
 SET hello TO "foobar"
 SEND hello TO DISPLAY
 
+IF hello == "foobar" THEN
+    SEND hello TO DISPLAY
+    SET hello TO "if"
+END IF
+
 SEND "done" TO DISPLAY
