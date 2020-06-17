@@ -4,13 +4,16 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "nearley": "^2.19.3",
-    "moo": "^0.5.1"
+    "chalk": "^4.1.0",
+    "moo": "^0.5.1",
+    "nearley": "^2.19.4",
+    "pretty-error": "^2.1.1",
+    "threads": "^1.6.1"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "npx nearleyc lang/lang.ne -o parse/grammar.js && npx nearley-railroad lang/lang.ne -o parse/grammar.html && node src/parse",
-    "parse": "npx nearleyc lang/lang.ne -o parse/grammar.js && npx node src/parse test/test.ref"
+    "test": "npx nearleyc lang/lang.ne -o parse/grammar.js && npx nearley-railroad lang/lang.ne -o parse/grammar.html && node src/parse test/test.ref --dev --thread",
+    "parse": "npx nearleyc -o parse/grammar.js lang/lang.ne && npx node src/parse test/test.ref"
   },
   "keywords": [],
   "author": "",
